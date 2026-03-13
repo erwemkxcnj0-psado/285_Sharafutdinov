@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Комментарии — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Комментарии к заявкам</h2>
+
+    {% if comments %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Заявка</th>
+                <th>Автор</th>
+                <th>Комментарий</th>
+                <th>Дата</th>
+            </tr>
+
+            {% for comment in comments %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>
+                    {% if comment.request %}
+                        {{ comment.request.request_number }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    {% if comment.author %}
+                        {{ comment.author.full_name }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>{{ comment.text }}</td>
+                <td>{{ comment.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Комментариев пока нет.</p>
+    {% endif %}
+</div>
+{% endblock %}

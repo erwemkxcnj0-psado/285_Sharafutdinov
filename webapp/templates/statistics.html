@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Статистика по заявкам</h2>
+
+    <h3>Общая статистика</h3>
+    <ul class="stat-list">
+        <li>Всего заявок: <strong>{{ total_requests }}</strong></li>
+        <li>Новых: <strong>{{ new_requests }}</strong></li>
+        <li>В работе: <strong>{{ in_progress_requests }}</strong></li>
+        <li>Завершённых: <strong>{{ done_requests }}</strong></li>
+        <li>Процент завершённых: <strong>{{ done_percent }}%</strong></li>
+        <li>
+            Среднее время выполнения заявки:
+            <strong>{{ average_repair_days }}</strong> дн.
+            {% if counted_requests > 0 %}
+                (по {{ counted_requests }} завершённым заявкам)
+            {% endif %}
+        </li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3>Статистика по типам оборудования</h3>
+
+    {% if equipment_stats %}
+        <table>
+            <tr>
+                <th>Тип оборудования</th>
+                <th>Количество заявок</th>
+            </tr>
+
+            {% for equipment_type, count in equipment_stats %}
+            <tr>
+                <td>{{ equipment_type }}</td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Данных пока нет.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Статистика по типам неисправностей</h3>
+
+    {% if problem_stats %}
+        <table>
+            <tr>
+                <th>Неисправность / описание проблемы</th>
+                <th>Количество заявок</th>
+            </tr>
+
+            {% for problem_text, count in problem_stats %}
+            <tr>
+                <td>{{ problem_text }}</td>
+                <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Данных пока нет.</p>
+    {% endif %}
+</div>
+{% endblock %}

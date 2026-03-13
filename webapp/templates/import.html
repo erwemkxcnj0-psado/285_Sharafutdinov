@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Импорт данных — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Импорт данных</h2>
+
+    <p>Поддерживаются файлы:</p>
+    <ul class="stat-list">
+        <li>inputDataUsers.csv / .txt / .xlsx</li>
+        <li>inputDataRequests.csv / .txt / .xlsx</li>
+        <li>inputDataComments.csv / .txt / .xlsx</li>
+    </ul>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <label>Выберите файл</label>
+            <input type="file" name="file" required>
+        </div>
+
+        <button type="submit">Импортировать</button>
+    </form>
+
+    <hr>
+
+    <p class="muted">
+        Файлы можно загружать в любом порядке. Система добавляет доступные записи и сообщает о пропущенных строках.
+    </p>
+</div>
+{% endblock %}

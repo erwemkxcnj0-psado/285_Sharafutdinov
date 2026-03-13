@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование заявки — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Редактирование заявки</h2>
+
+    <div class="actions">
+        <a class="btn btn-secondary" href="{{ url_for('main.requests_list') }}">Назад к списку</a>
+    </div>
+
+    <form method="post">
+        <div class="form-row">
+            <label>Номер заявки</label>
+            <input type="text" name="request_number" value="{{ item.request_number }}" required>
+        </div>
+
+        <div class="form-row">
+            <label>Дата начала</label>
+            <input type="text" name="start_date" value="{{ item.start_date or '' }}">
+        </div>
+
+        <div class="form-row">
+            <label>Тип оборудования</label>
+            <input type="text" name="equipment_type" value="{{ item.equipment_type }}" required>
+        </div>
+
+        <div class="form-row">
+            <label>Модель</label>
+            <input type="text" name="equipment_model" value="{{ item.equipment_model }}" required>
+        </div>
+
+        <div class="form-row">
+            <label>Описание проблемы</label>
+            <textarea name="problem_description" required>{{ item.problem_description }}</textarea>
+        </div>
+
+        <div class="form-row">
+            <label>ФИО клиента</label>
+            <input type="text" name="client_name" value="{{ item.client_name }}" required>
+        </div>
+
+        <div class="form-row">
+            <label>Телефон</label>
+            <input type="text" name="client_phone" value="{{ item.client_phone }}" required>
+        </div>
+
+        <div class="form-row">
+            <label>Статус</label>
+            <select name="status">
+                <option value="Новая" {% if item.status == "Новая" %}selected{% endif %}>Новая</option>
+                <option value="В работе" {% if item.status == "В работе" %}selected{% endif %}>В работе</option>
+                <option value="Завершена" {% if item.status == "Завершена" %}selected{% endif %}>Завершена</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Плановый срок выполнения</label>
+            <input type="text" name="planned_end_date" value="{{ item.planned_end_date or '' }}">
+        </div>
+
+        <div class="form-row">
+            <label>Использованные комплектующие</label>
+            <textarea name="repair_parts">{{ item.repair_parts or '' }}</textarea>
+        </div>
+
+        <div class="form-row">
+            <label>Назначенный специалист</label>
+            <select name="specialist_id">
+                <option value="">Не назначен</option>
+                {% for specialist in specialists %}
+                    <option value="{{ specialist.id }}" {% if item.specialist_id == specialist.id %}selected{% endif %}>
+                        {{ specialist.full_name }} ({{ specialist.role }})
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}

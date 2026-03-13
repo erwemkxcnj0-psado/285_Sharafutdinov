@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Оценка качества — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Оценка качества обслуживания</h2>
+
+    <p>
+        После завершения ремонта клиент может отсканировать QR-код и оставить оценку качества обслуживания.
+    </p>
+
+    <p>
+        <img src="{{ url_for('static', filename=qr_file) }}" alt="QR-код для оценки качества" width="300">
+    </p>
+
+    <p>
+        Ссылка на форму:
+        <br>
+        <a href="{{ form_url }}" target="_blank">{{ form_url }}</a>
+    </p>
+</div>
+{% endblock %}
