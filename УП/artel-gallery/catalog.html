@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каталог — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="catalog">
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Артель">
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" data-nav="index">Главная</a>
+        <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+        <div class="nav-dd">
+          <a href="artists.html" data-nav="artists" class="nav-dd__toggle">
+            Художники
+          </a>
+          <div class="nav-dd__menu">
+            <a href="artists.html">Художники «Артель»</a>
+            <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+          </div>
+        </div>
+
+        <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+        <a href="reviews.html" data-nav="reviews">Отзывы</a>
+        <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+        <a href="cart.html" class="nav-cart" data-nav="cart">
+          Корзина
+          <span id="cartCount" class="cart-count"></span>
+        </a>
+
+        <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+          <span class="nav-fav__icon">♡</span>
+          <span id="favCount" class="fav-count"></span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="catalog-head">
+          <div>
+            <h1 class="h1">Каталог</h1>
+            <p class="lead">
+              Оригинальные работы в наличии. Самовывоз: Екатеринбург, ЦУМ, Банковский переулок, д. 3, 1 этаж.
+            </p>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar card">
+          <div class="toolbar-row">
+            <div class="field">
+              <div class="field-label">Поиск</div>
+              <input class="input" id="qInput" type="search" placeholder="Название, художник, техника…" />
+            </div>
+
+            <div class="field">
+              <div class="field-label">Техника</div>
+              <select class="select" id="techSelect">
+                <option value="all">Все</option>
+                <option value="Масло">Масло</option>
+                <option value="Акрил">Акрил</option>
+                <option value="Акварель">Акварель</option>
+                <option value="Гуашь">Гуашь</option>
+                <option value="Смешанная техника">Смешанная техника</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <div class="field-label">Сортировка</div>
+              <select class="select" id="sortSelect">
+                <option value="popular">По умолчанию</option>
+                <option value="price_asc">Цена: по возрастанию</option>
+                <option value="price_desc">Цена: по убыванию</option>
+                <option value="title_asc">Название: А—Я</option>
+              </select>
+            </div>
+
+            <button class="btn btn-secondary btn-reset" id="resetBtn" type="button">Сбросить</button>
+          </div>
+
+          <div class="toolbar-foot">
+            <div class="results" id="resultsCount">Найдено: 0</div>
+            <div class="muted">Нажмите на картину, чтобы открыть в большом размере</div>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar card">
+          <div class="toolbar-foot">
+            <div>
+              <div class="card-title">Подбор картины по интерьеру</div>
+              <div class="muted">Перейдите в специальный раздел и выберите параметры помещения, стиля и бюджета.</div>
+            </div>
+            <div class="catalog-actions">
+              <a class="btn btn-primary" href="interior.html">Открыть подбор</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalog-grid catalog-grid--cards" id="catalogGrid"></div>
+
+        <div class="catalog-empty card" id="catalogEmpty" style="display:none;">
+          Ничего не найдено. Попробуй очистить фильтры или изменить запрос.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © Галерея «Артель» · <a href="contacts.html">Контакты</a>
+    </div>
+  </footer>
+
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-inner">
+      <img id="imageModalImg" src="" alt="">
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

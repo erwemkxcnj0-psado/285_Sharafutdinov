@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Отзывы — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="reviews">
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Артель">
+    </a>
+
+    <nav class="nav">
+
+      <a href="index.html" data-nav="index">Главная</a>
+
+      <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+      <div class="nav-dd">
+        <a href="artists.html" data-nav="artists" class="nav-dd__toggle">
+          Художники
+        </a>
+        <div class="nav-dd__menu">
+          <a href="artists.html">Художники «Артель»</a>
+          <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+        </div>
+      </div>
+
+      <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+      <a href="reviews.html" data-nav="reviews">Отзывы</a>
+      <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+      <a href="cart.html" class="nav-cart" data-nav="cart">
+        Корзина
+        <span id="cartCount" class="cart-count"></span>
+      </a>
+
+
+      <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+        <span class="nav-fav__icon">♡</span>
+        <span id="favCount" class="fav-count"></span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <section class="reviews-hero">
+    <div class="container">
+      <p class="kicker">реальные впечатления</p>
+      <h1 class="h1">Отзывы наших клиентов</h1>
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <div class="container">
+      <div id="reviewsGrid" class="reviews-grid-premium"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    © Галерея «Артель» · <a href="contacts.html">Контакты</a>
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+
+<script>
+(function () {
+  const grid = document.getElementById("reviewsGrid");
+
+  const reviews = [
+    {
+      author: "Марина Береснева",
+      text: "Нашла галерею случайно, хотела подобрать картину в гостиную. Помогли определиться с форматом и цветовой гаммой, показали несколько вариантов. Заказ оформили быстро, после отправки заявки связались и уточнили детали. Работа пришла в отличном состоянии, упаковка надежная."
+    },
+    {
+      author: "Елена Лейканд",
+      text: "В 2011 году друзья подарили мне картину на день рождения, и я долго не могла подобрать подходящий вариант оформления и размещения. Здесь помогли с рекомендациями по стилю и сочетанию с интерьером. Очень внимательное отношение и профессиональный вкус. Большое спасибо за аккуратную работу и консультацию."
+    },
+    {
+      author: "Наталья Мызникова",
+      text: "Долго выбирала подарок — нужна была небольшая картина в спокойных тонах. В каталоге удобно искать и сравнивать, описание понятное. После оформления заявки перезвонили, подтвердили заказ и согласовали получение. Результатом довольна, качество отличное."
+    },
+    {
+      author: "Мария Мешбанк",
+      text: "Очень приятное общение и быстрый отклик. Помогли подобрать картину под интерьер, объяснили нюансы по размеру и цвету. Все сделали аккуратно, спасибо!"
+    }
+  ];
+
+  function esc(s) {
+    return String(s ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function makeCard(r) {
+    const item = document.createElement("article");
+    item.className = "review-card";
+
+    item.innerHTML = `
+      <div class="review-author">${esc(r.author)}</div>
+      <p class="review-text">${esc(r.text)}</p>
+    `;
+
+    return item;
+  }
+
+  grid.innerHTML = "";
+  reviews.forEach(r => grid.appendChild(makeCard(r)));
+})();
+</script>

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Заявки — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Список заявок</h2>
+
+    <div class="actions">
+        {% if session.get('role') in ["Оператор", "Менеджер по качеству"] %}
+            <a class="btn" href="{{ url_for('main.create_request') }}">Добавить заявку</a>
+        {% endif %}
+    </div>
+
+    <form method="get" action="{{ url_for('main.requests_list') }}" class="card">
+        <div class="form-row">
+            <label>Поиск по заявкам</label>
+            <input type="text" name="q" value="{{ q }}" placeholder="Номер, клиент, тип, модель, статус">
+        </div>
+        <button type="submit">Найти</button>
+    </form>
+
+    {% if requests_items %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Номер</th>
+                <th>Тип оборудования</th>
+                <th>Модель</th>
+                <th>Клиент</th>
+                <th>Телефон</th>
+                <th>Статус</th>
+                <th>Срок</th>
+                <th>Действия</th>
+            </tr>
+
+            {% for item in requests_items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.request_number }}</td>
+                <td>{{ item.equipment_type }}</td>
+                <td>{{ item.equipment_model }}</td>
+                <td>{{ item.client_name }}</td>
+                <td>{{ item.client_phone }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.planned_end_date or '-' }}</td>
+                <td>
+                    <a href="{{ url_for('main.request_detail', request_id=item.id) }}">Открыть</a>
+
+                    {% if session.get('role') in ["Оператор", "Менеджер по качеству"] %}
+                        | <a href="{{ url_for('main.edit_request', request_id=item.id) }}">Изменить</a>
+                        | <form method="post"
+                                action="{{ url_for('main.delete_request', request_id=item.id) }}"
+                                class="inline"
+                                onsubmit="return confirm('Удалить заявку №{{ item.request_number }}? Это действие нельзя отменить.');">
+                            <button type="submit">Удалить</button>
+                          </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Заявок пока нет или по вашему запросу ничего не найдено.</p>
+    {% endif %}
+</div>
+{% endblock %}

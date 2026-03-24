@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Корзина — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="cart">
+  <header class="site-header site-header--thin">
+    <div class="container header-inner">
+      <a class="brand brand--logo" href="index.html" aria-label="На главную">
+        <img src="assets/img/logo.png" alt="Артель" />
+      </a>
+
+      <nav class="nav">
+  <a href="index.html" data-nav="index">Главная</a>
+  <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+  <div class="nav-dd">
+    <a href="artists.html" data-nav="artists" class="nav-dd__toggle">Художники</a>
+    <div class="nav-dd__menu">
+      <a href="artists.html">Художники «Артель»</a>
+      <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+    </div>
+  </div>
+
+  <a href="reviews.html" data-nav="reviews">Отзывы</a>
+  <a href="contacts.html" data-nav="contacts">Контакты</a>
+  <a href="cart.html" data-nav="cart">Корзина <span id="cartCount" class="cart-count"></span></a>
+
+      <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+        <span class="nav-fav__icon">♡</span>
+        <span id="favCount" class="fav-count"></span>
+      </a>
+</nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <h1 class="h1">Корзина</h1>
+
+      <div class="cart-wrap">
+        <div id="cartList" class="cart-list"></div>
+
+        <div class="cart-summary card">
+          <div class="h2" style="margin-top:0;">Итого</div>
+          <div class="lead">Сумма: <span id="cartTotal">0</span> ₽</div>
+          <p class="muted">
+            Оплата при получении. Заявка уходит владельцу, затем мы связываемся с вами для подтверждения.
+          </p>
+
+          <form id="orderForm" action="https://formsubmit.co/steamkirillakk2@gmail.com" method="POST" autocomplete="on">
+            <input type="hidden" name="_subject" value="Новый заказ с сайта «Артель»">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
+            <input type="hidden" name="Заказ" id="orderItemsField" value="">
+            <input type="hidden" name="Сумма" id="orderTotalField" value="">
+
+            <div class="h2" style="margin:18px 0 12px;">Оформление доставки</div>
+
+            <div class="order-grid">
+              <label class="order-field">
+                <span>Имя</span>
+                <input name="Имя" type="text" required placeholder="Иван">
+              </label>
+
+              <label class="order-field">
+                <span>Телефон</span>
+                <input name="Телефон" type="tel" required placeholder="+7 (___) ___-__-__">
+              </label>
+
+              <label class="order-field order-field--full">
+                <span>Адрес доставки</span>
+                <input name="Адрес" type="text" required placeholder="Город, улица, дом, квартира">
+              </label>
+
+              <label class="order-field order-field--full">
+                <span>Комментарий (необязательно)</span>
+                <textarea name="Комментарий" rows="3" placeholder="Подъезд, домофон, удобное время..."></textarea>
+              </label>
+            </div>
+
+            <div class="cart-actions" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
+              <button class="btn btn-primary" id="submitOrderBtn" type="submit">Оформить заказ</button>
+              <button class="btn btn-secondary" id="clearCartBtn" type="button">Очистить корзину</button>
+            </div>
+
+            <div id="orderSuccess" style="display:none; margin-top:14px;">
+              <div class="card" style="border-color:#e6e6e6;">
+                <div class="h2" style="margin:0 0 8px;">Спасибо за заказ!</div>
+                <div class="lead" style="margin:0;">Мы получили заявку. С вами скоро свяжутся для подтверждения.</div>
+              </div>
+            </div>
+
+            <div id="orderError" style="display:none; margin-top:14px;">
+              <div class="card" style="border-color:#f0d6d6;">
+                <div class="h2" style="margin:0 0 8px;">Не получилось отправить</div>
+                <div class="lead" style="margin:0;">Проверьте интернет и попробуйте ещё раз.</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © Галерея «Артель» · <a href="contacts.html">Контакты</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+
+ <script>
+(function () {
+  const form = document.getElementById('orderForm');
+  if (!form) return;
+
+  const successBox = document.getElementById('orderSuccess');
+  const errorBox = document.getElementById('orderError');
+  const submitBtn = document.getElementById('submitOrderBtn');
+
+  const itemsField = document.getElementById('orderItemsField');
+  const totalField = document.getElementById('orderTotalField');
+  const t = (text) => (typeof window.__t === 'function' ? window.__t(text) : text);
+
+  function buildOrderText() {
+    const cart = (typeof loadCart === "function") ? loadCart() : {};
+    const lines = [];
+
+    for (const [id, qtyRaw] of Object.entries(cart)) {
+      const qty = Number(qtyRaw) || 0;
+      if (qty <= 0) continue;
+
+      const p = (Array.isArray(PRODUCTS) ? PRODUCTS.find(x => x.id === id) : null);
+      if (!p) continue;
+
+      const subtotal = p.price * qty;
+
+      lines.push(
+        `${p.title}\nКоличество: ${qty}\nСтоимость: ${rub(subtotal)} ₽`
+      );
+    }
+
+    return lines.length ? lines.join("\n\n") : "Корзина пуста";
+  }
+
+  function isCartEmpty() {
+    const cart = (typeof loadCart === "function") ? loadCart() : {};
+    return !cart || Object.keys(cart).length === 0;
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    if (successBox) successBox.style.display = 'none';
+    if (errorBox) errorBox.style.display = 'none';
+
+    if (isCartEmpty()) {
+      alert(t("Корзина пуста"));
+      return;
+    }
+
+    if (itemsField) itemsField.value = buildOrderText();
+
+    const cartTotalEl = document.getElementById('cartTotal');
+    if (totalField) {
+      totalField.value = cartTotalEl ? (cartTotalEl.textContent || '').trim() + ' ₽' : '';
+    }
+
+    const oldText = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn){
+      submitBtn.disabled = true;
+      submitBtn.textContent = t('Отправляем...');
+    }
+
+    try{
+      const formData = new FormData(form);
+
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!resp.ok) throw new Error('bad response');
+
+      if (successBox) successBox.style.display = 'block';
+      form.reset();
+      if (typeof saveCart === 'function') saveCart({});
+      if (typeof updateCartBadge === 'function') updateCartBadge();
+      if (typeof renderCartPage === 'function') renderCartPage();
+
+    } catch(err){
+      if (errorBox) errorBox.style.display = 'block';
+    } finally{
+      if (submitBtn){
+        submitBtn.disabled = false;
+        submitBtn.textContent = oldText;
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

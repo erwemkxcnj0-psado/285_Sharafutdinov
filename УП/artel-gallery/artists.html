@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Художники — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="artists">
+  <header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Артель">
+    </a>
+
+    <nav class="nav">
+
+      <a href="index.html" data-nav="index">Главная</a>
+
+      <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+      <div class="nav-dd">
+        <a href="artists.html" data-nav="artists" class="nav-dd__toggle">
+          Художники
+        </a>
+        <div class="nav-dd__menu">
+          <a href="artists.html">Художники «Артель»</a>
+          <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+        </div>
+      </div>
+
+      <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+      <a href="reviews.html" data-nav="reviews">Отзывы</a>
+      <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+      <a href="cart.html" class="nav-cart" data-nav="cart">
+        Корзина
+        <span id="cartCount" class="cart-count"></span>
+      </a>
+
+
+      <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+        <span class="nav-fav__icon">♡</span>
+        <span id="favCount" class="fav-count"></span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <section class="section artists-hero">
+      <div class="container">
+        <p class="kicker">ГАЛЕРЕЯ «АРТЕЛЬ»</p>
+        <h1 class="h1">Художники</h1>
+        <p class="lead">
+          Авторы, чьи работы представлены в каталоге.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="artists-list" id="artistsList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© Галерея «Артель»</div>
+      <div class="footer-links">
+        <a href="contacts.html">Контакты</a>
+        <a href="catalog.html">Каталог</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+  <script src="assets/js/artists.js"></script>
+</body>
+</html>

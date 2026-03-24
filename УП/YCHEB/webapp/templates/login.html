@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Вход — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Вход в систему</h2>
+
+    {% if error %}
+        <div class="flash error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        <div class="form-row">
+            <label>Логин</label>
+            <input type="text" name="username" required>
+        </div>
+
+        <div class="form-row">
+            <label>Пароль</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <div class="form-row">
+            <button type="submit">Войти</button>
+        </div>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Тестовые пользователи</h3>
+    <p>operator / 12345</p>
+    <p>specialist / 12345</p>
+    <p>manager / 12345</p>
+    <p>client / 12345</p>
+</div>
+{% endblock %}

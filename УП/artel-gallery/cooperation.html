@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Сотрудничество — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    .nav .dropdown{ position: relative; }
+    .nav .dropdown > a{ display:inline-flex; gap:8px; align-items:center; }
+    .nav .dropdown-menu{
+      position:absolute;
+      top: 100%;
+      left: 0;
+      min-width: 260px;
+      background:#fff;
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.08);
+      display:none;
+      margin-top: 10px;
+      z-index: 999;
+    }
+    .nav .dropdown-menu a{
+      display:block;
+      padding: 10px 10px;
+      border-radius: 10px;
+      color:#000;
+      text-decoration:none;
+      white-space: nowrap;
+    }
+    .nav .dropdown-menu a:hover{
+      background: rgba(0,0,0,.03);
+      text-decoration:none;
+    }
+    .nav .dropdown:hover .dropdown-menu,
+    .nav .dropdown:focus-within .dropdown-menu{
+      display:block;
+    }
+    .nav .dropdown::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      height: 12px;
+    }
+  </style>
+</head>
+
+<body data-page="cooperation">
+  <header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Артель">
+    </a>
+
+    <nav class="nav">
+
+      <a href="index.html" data-nav="index">Главная</a>
+
+      <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+      <div class="nav-dd">
+        <a href="artists.html" data-nav="artists" class="nav-dd__toggle">
+          Художники
+        </a>
+        <div class="nav-dd__menu">
+          <a href="artists.html">Художники «Артель»</a>
+          <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+        </div>
+      </div>
+
+      <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+      <a href="reviews.html" data-nav="reviews">Отзывы</a>
+      <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+      <a href="cart.html" class="nav-cart" data-nav="cart">
+        Корзина
+        <span id="cartCount" class="cart-count"></span>
+      </a>
+
+
+      <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+        <span class="nav-fav__icon">♡</span>
+        <span id="favCount" class="fav-count"></span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">галерея «артель»</p>
+        <h1 class="h1">Сотрудничество для художников</h1>
+        <p class="lead">
+          Мы работаем с авторами из Екатеринбурга и Урала и помогаем довести работы до покупателя:
+          от отбора и презентации до продажи и передачи клиенту. Если у вас есть готовая серия работ
+          или вы ищете площадку для постоянного сотрудничества — отправьте заявку.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="card" style="margin-bottom:16px;">
+    
+
+        <div class="card" style="margin-bottom:16px;">
+          <div class="h2">Что мы предлагаем</div>
+          <ul class="checklist">
+            <li>размещение работ в каталоге интернет-магазина</li>
+            <li>оформление карточек: описание, техника, размеры, цена</li>
+            <li>продвижение через соцсети и рекомендации покупателям</li>
+            <li>помощь в подборе работ под интерьер и запрос клиента</li>
+            <li>прозрачные условия взаимодействия и фиксация договорённостей</li>
+            <li>аккуратная передача работ покупателю (самовывоз/доставка по договорённости)</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;">
+          <div class="h2">Как подать заявку</div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <div class="step-title">Подготовьте портфолио</div>
+                <div class="step-text">
+                  10–20 работ (ссылкой или архивом), 2–3 фото каждой работы (общий вид и фрагмент),
+                  а также список с названиями, размерами, техникой и ценами.
+                </div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <div class="step-title">Добавьте информацию о себе</div>
+                <div class="step-text">
+                  Короткая биография, город, участие в выставках (если есть), ссылки на соцсети/сайт,
+                  предпочтительный способ связи.
+                </div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <div class="step-title">Отправьте заявку</div>
+                <div class="step-text">
+                  Контакты для сотрудничества указаны на странице «Контакты». Мы свяжемся с вами после просмотра материалов.
+                </div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">4</div>
+              <div>
+                <div class="step-title">Согласуем условия</div>
+                <div class="step-text">
+                  Обсуждаем формат размещения, комиссии/условия продажи, сроки обновления наличия и порядок передачи работ.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions-row">
+            <a class="btn btn-primary" href="contacts.html">Перейти к контактам</a>
+            <a class="btn btn-secondary" href="artists.html">Посмотреть художников «Артель»</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;">
+          <div class="h2">Требования к материалам</div>
+          <ul class="bullets">
+            <li>фото работ без сильных бликов и искажений перспективы (желательно дневной свет)</li>
+            <li>размеры указывать в см (например: 50 × 70 см)</li>
+            <li>техника и основа: масло/акрил/акварель/гуашь и т.п., холст/бумага/картон</li>
+            <li>состояние работы: в раме/без рамы, нужна ли упаковка для передачи</li>
+            <li>цена и наличие должны быть актуальны (если работа продана — сообщать заранее)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="h2">Рассмотрение заявки</div>
+          <p class="muted" style="margin:0 0 10px;">
+            Отбор работ проводится по качеству исполнения, целостности серии и соответствию тематике галереи.
+            Мы не “переоформляем” ваши работы без согласования: любые изменения в описаниях, цене и наличии — только по договорённости.
+          </p>
+          <p class="muted" style="margin:0;">
+            Если материалов много, удобнее прислать ссылку на папку (облако) и отдельным файлом список работ (название, техника, размер, цена).
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© Галерея «Артель»</div>
+      <div class="footer-links">
+        <a href="contacts.html">Контакты</a>
+        <a href="catalog.html">Каталог</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

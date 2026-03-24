@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Контакты — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="contacts">
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Артель">
+    </a>
+
+    <nav class="nav">
+
+      <a href="index.html" data-nav="index">Главная</a>
+
+      <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+      <div class="nav-dd">
+        <a href="artists.html" data-nav="artists" class="nav-dd__toggle">
+          Художники
+        </a>
+        <div class="nav-dd__menu">
+          <a href="artists.html">Художники «Артель»</a>
+          <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+        </div>
+      </div>
+
+      <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+      <a href="reviews.html" data-nav="reviews">Отзывы</a>
+      <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+      <a href="cart.html" class="nav-cart" data-nav="cart">
+        Корзина
+        <span id="cartCount" class="cart-count"></span>
+      </a>
+
+
+      <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+        <span class="nav-fav__icon">♡</span>
+        <span id="favCount" class="fav-count"></span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="section section-soft">
+    <div class="container">
+      <p class="kicker">Контакты</p>
+      <h1 class="h1">Галерея «Артель»</h1>
+      <p class="lead">
+        Самовывоз и консультации в галерее. По заявкам с сайта мы связываемся и уточняем детали получения.
+      </p>
+
+      <div class="contacts-cards">
+        <div class="contacts-card">
+          <div class="contacts-card-title">Адрес</div>
+          <div class="contacts-card-text">ЦУМ, Банковский переулок, д. 3, 1 этаж</div>
+          <div class="contacts-card-sub">г. Екатеринбург</div>
+        </div>
+
+        <div class="contacts-card">
+          <div class="contacts-card-title">Телефон</div>
+          <div class="contacts-card-text">
+            <a class="contacts-link" href="tel:+79122225500">+7 (912) 222-55-00</a>
+          </div>
+          <div class="contacts-card-sub">Основной канал связи</div>
+        </div>
+
+        <div class="contacts-card">
+          <div class="contacts-card-title">VK</div>
+          <div class="contacts-card-text">
+            <a class="contacts-link" href="https://vk.com/artelekb" target="_blank" rel="noopener">https://vk.com/artelekb</a>
+          </div>
+          <div class="contacts-card-sub">Можно написать в сообщения</div>
+        </div>
+
+        <div class="contacts-card">
+          <div class="contacts-card-title">Время работы</div>
+          <div class="contacts-hours">
+            <div class="contacts-hours-row"><span>Пн–Пт</span><span>10:00–20:00</span></div>
+            <div class="contacts-hours-row"><span>Сб</span><span>11:00–18:00</span></div>
+            <div class="contacts-hours-row"><span>Вс</span><span>выходной</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacts-map-wrap">
+    <div class="map-frame map-frame--full">
+      <div style="position:relative;overflow:hidden;">
+        <a href="https://yandex.ru/maps/org/artel/62038404304/?utm_medium=mapframe&utm_source=maps"
+           style="color:#eee;font-size:12px;position:absolute;top:0px;left:0;right:0;z-index:2;padding:4px 8px;">
+          Артель
+        </a>
+        <a href="https://yandex.ru/maps/54/yekaterinburg/category/picture_framing/184105844/?utm_medium=mapframe&utm_source=maps"
+           style="color:#eee;font-size:12px;position:absolute;top:18px;left:0;right:0;z-index:2;padding:4px 8px;">
+          Багетные изделия в Екатеринбурге
+        </a>
+        <a href="https://yandex.ru/maps/54/yekaterinburg/category/art_workshop/184105850/?utm_medium=mapframe&utm_source=maps"
+           style="color:#eee;font-size:12px;position:absolute;top:36px;left:0;right:0;z-index:2;padding:4px 8px;">
+          Художественная мастерская в Екатеринбурге
+        </a>
+
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=60.596970%2C56.836312&mode=poi&oid=62038404304&z=16"
+          width="100%"
+          height="520"
+          frameborder="0"
+          allowfullscreen="true"
+          style="position:relative;">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contacts-info">
+        <div class="contacts-info-left card">
+          <div class="h2">Как добраться</div>
+          <p class="muted" style="margin:0;">
+            Мы находимся в магазине «ЦУМ.Мир ткани», на первом этаже (Банковский переулок, 3).
+            В здании два входа: со стороны станции метро «Площадь 1905 года» и со стороны Пассажа.
+          </p>
+        </div>
+
+        <div class="contacts-info-right card">
+          <div class="h2">Связь</div>
+          <p class="muted" style="margin:0 0 12px;">
+            По заявкам с сайта владелец связывается с клиентом и уточняет детали.
+          </p>
+
+          <div class="contacts-actions">
+            <a class="btn btn-primary" href="tel:+79122225500">+7 912 222 55 00</a>
+            <a class="btn btn-secondary" href="https://vk.com/im/convo/-40435059?entrypoint=community_page&tab=all" target="_blank" rel="noopener">
+              Написать в VK
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    © Галерея «Артель» · Екатеринбург
+  </div>
+</footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

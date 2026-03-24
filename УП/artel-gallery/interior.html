@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Подбор по интерьеру — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="interior">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Артель">
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" data-nav="index">Главная</a>
+        <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+        <div class="nav-dd">
+          <a href="artists.html" data-nav="artists" class="nav-dd__toggle">Художники</a>
+          <div class="nav-dd__menu">
+            <a href="artists.html">Художники «Артель»</a>
+            <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+          </div>
+        </div>
+
+        <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+        <a href="reviews.html" data-nav="reviews">Отзывы</a>
+        <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+        <a href="cart.html" class="nav-cart" data-nav="cart">
+          Корзина
+          <span id="cartCount" class="cart-count"></span>
+        </a>
+
+        <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+          <span class="nav-fav__icon">♡</span>
+          <span id="favCount" class="fav-count"></span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+  <section class="interior-hero">
+    <div class="container">
+      <p class="kicker">Сервис подбора</p>
+      <h1 class="h1">Подбор картины по интерьеру</h1>
+      <p class="lead">
+        Этот раздел помогает подобрать работу под конкретное помещение. Выберите параметры интерьера, а сайт покажет наиболее подходящие картины из каталога.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="interior-layout">
+
+        <aside class="interior-side">
+          <div class="card interior-card">
+            <div class="card-title">Параметры подбора</div>
+            <p class="muted interior-note">
+              Укажите тип помещения, стиль, технику, бюджет и цветовую гамму.
+            </p>
+
+            <form id="interiorPageForm">
+              <div class="interior-form-grid">
+                <div class="field">
+                  <div class="field-label">Тип помещения</div>
+                  <select class="select" id="interiorRoom">
+                    <option value="">Не выбрано</option>
+                    <option value="гостиная">Гостиная</option>
+                    <option value="спальня">Спальня</option>
+                    <option value="кабинет">Кабинет</option>
+                    <option value="кухня">Кухня</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <div class="field-label">Размер</div>
+                  <select class="select" id="interiorSize">
+                    <option value="">Не выбрано</option>
+                    <option value="маленькая">Маленькая</option>
+                    <option value="средняя">Средняя</option>
+                    <option value="большая">Большая</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <div class="field-label">Стиль</div>
+                  <select class="select" id="interiorStyle">
+                    <option value="">Не выбрано</option>
+                    <option value="классика">Классика</option>
+                    <option value="современный">Современный</option>
+                    <option value="абстракция">Абстракция</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <div class="field-label">Техника</div>
+                  <select class="select" id="interiorTechnique">
+                    <option value="">Не выбрано</option>
+                    <option value="Масло">Масло</option>
+                    <option value="Акрил">Акрил</option>
+                    <option value="Акварель">Акварель</option>
+                    <option value="Гуашь">Гуашь</option>
+                    <option value="Смешанная техника">Смешанная техника</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <div class="field-label">Бюджет</div>
+                  <select class="select" id="interiorBudget">
+                    <option value="">Не выбрано</option>
+                    <option value="до20000">До 20 000 ₽</option>
+                    <option value="до50000">До 50 000 ₽</option>
+                    <option value="от50000">От 50 000 ₽</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <div class="field-label">Цветовая гамма</div>
+                  <select class="select" id="interiorPalette">
+                    <option value="">Не выбрано</option>
+                    <option value="тёплая">Тёплая</option>
+                    <option value="холодная">Холодная</option>
+                    <option value="нейтральная">Нейтральная</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="interior-actions">
+                <button class="btn btn-primary" type="submit">Подобрать</button>
+                <button class="btn btn-secondary" id="interiorResetBtn" type="button">Сбросить</button>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+        <div class="interior-results">
+          <div class="card interior-results-head">
+            <div>
+              <div class="card-title">Результаты подбора</div>
+              <div class="muted">Система показывает работы, наиболее подходящие под выбранные параметры.</div>
+            </div>
+            <div class="results" id="resultsCount">Найдено: 0</div>
+          </div>
+
+          <div class="catalog-grid catalog-grid--cards" id="catalogGrid"></div>
+
+          <div class="catalog-empty card" id="catalogEmpty" style="display:none;">
+            По выбранным параметрам ничего не найдено. Попробуйте изменить условия подбора.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © Галерея «Артель» · <a href="contacts.html">Контакты</a>
+    </div>
+  </footer>
+
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-inner">
+      <img id="imageModalImg" src="" alt="">
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

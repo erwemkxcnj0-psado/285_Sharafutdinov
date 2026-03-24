@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Пользователи — Конди{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="page-title">Пользователи системы</h2>
+
+    {% if users %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Логин</th>
+                <th>Роль</th>
+                <th>Телефон</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.phone or "-" }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Пользователей пока нет.</p>
+    {% endif %}
+</div>
+{% endblock %}

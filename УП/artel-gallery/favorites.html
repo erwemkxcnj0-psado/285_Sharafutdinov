@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Избранное — Галерея «Артель»</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body data-page="favorites">
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Артель">
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" data-nav="index">Главная</a>
+        <a href="catalog.html" data-nav="catalog">Каталог</a>
+
+        <div class="nav-dd">
+          <a href="artists.html" data-nav="artists" class="nav-dd__toggle">
+            Художники
+          </a>
+          <div class="nav-dd__menu">
+            <a href="artists.html">Художники «Артель»</a>
+            <a href="cooperation.html" data-nav="cooperation">Сотрудничество</a>
+          </div>
+        </div>
+
+        <a href="howbuy.html" data-nav="howbuy">Как купить</a>
+        <a href="reviews.html" data-nav="reviews">Отзывы</a>
+        <a href="contacts.html" data-nav="contacts">Контакты</a>
+
+        <a href="cart.html" class="nav-cart" data-nav="cart">
+          Корзина
+          <span id="cartCount" class="cart-count"></span>
+        </a>
+
+        <a href="favorites.html" class="nav-fav" data-nav="favorites" aria-label="Избранное" title="Избранное">
+          <span class="nav-fav__icon">♡</span>
+          <span id="favCount" class="fav-count"></span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="catalog-head">
+          <div>
+            <h1 class="h1">Избранное</h1>
+            <p class="lead">Здесь собраны картины, которые вы сохранили, чтобы вернуться к ним позже.</p>
+          </div>
+        </div>
+
+        <div class="catalog-grid catalog-grid--cards" id="favoritesGrid"></div>
+
+        <div class="catalog-empty card" id="favoritesEmpty" style="display:none;">
+          В избранном пока ничего нет. <a href="catalog.html">Перейти в каталог</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © Галерея «Артель» · <a href="contacts.html">Контакты</a>
+    </div>
+  </footer>
+
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-inner">
+      <img id="imageModalImg" src="" alt="">
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
